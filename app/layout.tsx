@@ -50,11 +50,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  // twitter: {
-  //   title: siteMetadata.title,
-  //   card: 'summary_large_image',
-  //   images: [siteMetadata.socialBanner],
-  // },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -65,13 +60,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-touch-icon.png" />
-      <link rel="icon" href='/static/favicons/favicon.ico' />
+      <link rel="icon" href="/static/favicons/favicon.ico" />
       <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/favicon-16x16.png" />
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+
+      {/* <meta
+        httpEquiv="Content-Security-Policy"
+        content="
+                default-src 'self';
+                script-src 'self' 'unsafe-eval' 'unsafe-inline' https://giscus.app;
+                style-src 'self' 'unsafe-inline' https://giscus.app/default.css;
+                media-src *.s3.amazonaws.com https://giscus.app;
+                frame-src giscus.app;
+              "
+      /> */}
+
       <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />

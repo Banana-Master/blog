@@ -1,4 +1,6 @@
 /** @type {import("pliny/config").PlinyConfig } */
+
+// TODO : 소셜 배너 바꿔야함
 const siteMetadata = {
   title: '성호의 개발 블로그',
   author: 'Banana-Master',
@@ -9,7 +11,7 @@ const siteMetadata = {
   siteUrl: 'https://banana-master-blog.vercel.app',
   siteRepo: 'https://github.com/Banana-Master/blog',
   siteLogo: '/static/images/logo.png',
-  socialBanner: '/static/images/twitter-card.png',
+  socialBanner: '/static/images/social-banner.png',
   email: 'tjdgh0313@gmail.com',
   github: 'https://github.com/Banana-Master/blog',
   linkedin: 'https://www.linkedin.com/in/%EA%B9%80%EC%84%B1%ED%98%B8-sungho-kim-b082682a0?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
@@ -37,26 +39,16 @@ const siteMetadata = {
     //   googleAnalyticsId: '', // e.g. G-XXXXXXX
     // },
   },
-  // newsletter: {
-  //   // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus
-  //   // Please add your .env file and modify it according to your selection
-  //   provider: 'buttondown',
-  // },
   comments: {
-    // If you want to use an analytics provider you have to add it to the
-    // content security policy in the `next.config.js` file.
-    // Select a provider and use the environment variables associated to it
     // https://vercel.com/docs/environment-variables
     provider: 'giscus', // supported providers: giscus, utterances, disqus
     giscusConfig: {
-      // Visit the link below, and follow the steps in the 'configuration' section
-      // https://giscus.app/
-      repo: process.env.NEXT_PUBLIC_GISCUS_REPO,
-      repositoryId: process.env.NEXT_PUBLIC_GISCUS_REPOSITORY_ID,
-      category: process.env.NEXT_PUBLIC_GISCUS_CATEGORY,
-      categoryId: process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID,
-      mapping: 'pathname', // supported options: pathname, url, title
-      reactions: '1', // Emoji reactions: 1 = enable / 0 = disable
+      repo: 'Banana-Master/blog-comment',
+      repositoryId: '',
+      category: 'Comments',
+      categoryId: '',
+      mapping: 'pathname',
+      reactions: '1',
       // Send discussion metadata periodically to the parent window: 1 = enable / 0 = disable
       metadata: '0',
       // theme example: light, dark, dark_dimmed, dark_high_contrast
