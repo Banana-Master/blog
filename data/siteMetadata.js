@@ -39,6 +39,31 @@ const siteMetadata = {
     //   googleAnalyticsId: '', // e.g. G-XXXXXXX
     // },
   },
+  comments: {
+    // https://vercel.com/docs/environment-variables
+    provider: 'giscus', // supported providers: giscus, utterances, disqus
+    giscusConfig: {
+      repo: 'Banana-Master/blog-comment',
+      repositoryId: '',
+      category: 'Comments',
+      categoryId: '',
+      mapping: 'pathname',
+      reactions: '1',
+      // Send discussion metadata periodically to the parent window: 1 = enable / 0 = disable
+      metadata: '0',
+      // theme example: light, dark, dark_dimmed, dark_high_contrast
+      // transparent_dark, preferred_color_scheme, custom
+      theme: 'light',
+      // theme when dark mode
+      darkTheme: 'transparent_dark',
+      // If the theme option above is set to 'custom`
+      // please provide a link below to your custom theme css file.
+      // example: https://giscus.app/themes/custom_example.css
+      themeURL: '',
+      // This corresponds to the `data-lang="en"` in giscus's configurations
+      lang: 'ko',
+    },
+  },
   search: {
     provider: 'kbar', // kbar or algolia
     kbarConfig: {
