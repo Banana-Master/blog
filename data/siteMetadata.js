@@ -43,11 +43,11 @@ const siteMetadata = {
     // https://vercel.com/docs/environment-variables
     provider: 'giscus', // supported providers: giscus, utterances, disqus
     giscusConfig: {
-      repo: 'Banana-Master/blog-comment',
+      repo: '',
       repositoryId: '',
-      category: 'Comments',
+      category: '',
       categoryId: '',
-      mapping: 'pathname',
+      mapping: '',
       reactions: '1',
       // Send discussion metadata periodically to the parent window: 1 = enable / 0 = disable
       metadata: '0',
