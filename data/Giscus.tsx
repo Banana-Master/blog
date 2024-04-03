@@ -53,7 +53,6 @@ export default function Giscus() {
     scriptElem.setAttribute('data-loading', 'lazy')
 
     ref.current.appendChild(scriptElem)
-    console.log(scriptElem)
   }, [theme])
 
   // https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#isetconfigmessage

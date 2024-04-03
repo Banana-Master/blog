@@ -1,0 +1,88 @@
+---
+title: 'CSP(콘텐츠 보안 정책) 넌 누구니?'
+date: '2024-04-02'
+lastmod: '2024-04-02'
+tags: ['#Front-end', '#보안', '#CSP', '#콘텐츠보안정책', '#guide']
+draft: false
+summary: '블로그 댓글을 giscus로 만들면서 겪었던 CSP(Content-Security-Policy) 콘텐츠 보안 정책에 대해 알아보자'
+images: ['/static/images/csp.png']
+---
+
+<img src="/static/images/csp.png" width="70%" style={{ display: 'block', margin: '0 auto' }} />
+
+블로그를 직접 만들면서 댓글기능을 위해 giscus를 추가했는데 추가하면서 CSP라는 문제를 만났다. 그동안 프로젝트를 하면서 CORS는 많이 겪었는데 CSP는 처음이라 당황했지만 나름 잘 해결했다.
+다음에 해결할 때는 좀 더 빨리 해결하기 위해 정리하면서 공부해보자.
+
+`giscus.app`문서에서 giscus를 사용할 때 해당 script를 header에 작성하라고 명시되어있다.
+
+```html:giscus_헤더_사용방법
+<script src="https://giscus.app/client.js"
+        data-repo="[your-repo-name]"
+        data-repo-id="[your-repo-id]"
+        data-category="[your-category-name]"
+        data-category-id="[your-category-id]"
+   ...
+        async>
+</script>
+```
+
+하지만 이렇게만 끝내면 CSP 에러가 뜬다.
+
+### CSP란?
+
+> 콘텐츠 보안 정책 (CSP)는 교차 사이트 스크립팅(XSS)과 데이터 주입 공격을 비롯한 특정 유형의 공격을 탐지하고 완화하는 데 도움이 되는 추가 보안 계층입니다. 이러한 공격은 데이터 절도에서 사이트 훼손, 맬웨어 배포에 이르기까지 모든 것에 사용됩니다. - MDN
+
+MDN에는 이렇게 명시되어있다. 그리고 이를 해결 하기 위해서는 HTTP헤더에 정책을 작성하라고 한다.
+
+```html:CSP_simple_example
+<meta
+  http-equiv="Content-Security-Policy"
+  content="default-src 'self'; img-src https://*; child-src 'none';" />
+```
+
+위의 예시같이 브라우저의 `console`에 뜬 에러메세지를 보고 필요한 속성을 찾아서 추가해주면된다.
+
+- `default-src`: 기본 리소스 로딩 정책을 지정합니다. 만약 특정 리소스에 대한 정책이 별도로 지정되지 않았다면 이 속성에 지정된 정책이 적용됩니다.
+
+- `script-src`: JavaScript 파일을 로딩할 때 적용되는 정책을 지정합니다.
+
+- `style-src`: CSS 파일이나 스타일 요소를 로딩할 때 적용되는 정책을 지정합니다.
+
+- `img-src`: 이미지 리소스를 로딩할 때 적용되는 정책을 지정합니다.
+
+- `font-src`: 폰트 리소스를 로딩할 때 적용되는 정책을 지정합니다.
+
+- `connect-src`: XMLHttpRequest, WebSocket 또는 EventSource를 통해 통신할 때 적용되는 정책을 지정합니다.
+
+- `media-src`: 오디오 및 비디오 리소스를 로딩할 때 적용되는 정책을 지정합니다.
+
+- `object-src`: object, embed, applet 요소 등을 로딩할 때 적용되는 정책을 지정합니다.
+
+- `frame-src`: iframe 요소를 로딩할 때 적용되는 정책을 지정합니다.
+
+- `child-src`: 자식 리소스를 로딩할 때 적용되는 정책을 지정합니다. frame-src 대신 사용될 수 있습니다.
+
+- `form-action`: 폼이 제출될 때 적용되는 정책을 지정합니다.
+
+- `frame-ancestors`: 현재 문서를 포함할 수 있는 상위 문서의 URL을 지정하여 Clickjacking 공격을 방지하는 정책을 지정합니다.
+
+- `block-all-mixed-content`: HTTPS 페이지에서 HTTP 리소스를 로딩하는 것을 차단하는 정책을 지정합니다.
+
+```javascript:실제적용한코드
+const ContentSecurityPolicy = `
+  default-src 'self';
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://giscus.app/client.js https://giscus.app/api/discussions analytics.umami.is;
+  style-src 'self' 'unsafe-inline' https://giscus.app/default.css;
+  img-src * blob: data:;
+  media-src *.s3.amazonaws.com;
+  connect-src *;
+  font-src 'self';
+  frame-src 'self' https://giscus.app;
+`
+```
+
+#### 참고
+
+[MDN CSP](https://developer.mozilla.org/ko/docs/Web/HTTP/CSP)
+
+[CSP guide](https://content-security-policy.com/)

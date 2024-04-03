@@ -1,6 +1,5 @@
 /** @type {import("pliny/config").PlinyConfig } */
 
-// TODO : 소셜 배너 바꿔야함
 const siteMetadata = {
   title: '성호의 개발 블로그',
   author: 'Banana-Master',
