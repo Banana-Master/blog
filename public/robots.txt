@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://sh-devlog.vercel.app/
+
+# Sitemaps
+Sitemap: https://sh-devlog.vercel.app/sitemap.xml
