@@ -67,17 +67,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-
-      {/* <meta
-        httpEquiv="Content-Security-Policy"
-        content="
-                default-src 'self';
-                script-src 'self' 'unsafe-eval' 'unsafe-inline' https://giscus.app;
-                style-src 'self' 'unsafe-inline' https://giscus.app/default.css;
-                media-src *.s3.amazonaws.com https://giscus.app;
-                frame-src giscus.app;
-              "
-      /> */}
+      {/* 구글 서치콘솔 등록 */}
+      <meta name="google-site-verification" content="bIDb7wkrEv2qHMvpXzr0ySb48Bem2srLquA-frIjooo" />
 
       <body className="bg-white text-black antialiased dark:bg-gray-800 dark:text-white">
         <ThemeProviders>
