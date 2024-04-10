@@ -71,7 +71,7 @@ MDN에는 이렇게 명시되어있다. 그리고 이를 해결 하기 위해서
 ```javascript:실제적용한코드
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://giscus.app/client.js https://giscus.app/api/discussions analytics.umami.is;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://giscus.app/client.js https://giscus.app/api/discussions;
   style-src 'self' 'unsafe-inline' https://giscus.app/default.css;
   img-src * blob: data:;
   media-src *.s3.amazonaws.com;

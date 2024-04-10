@@ -7,7 +7,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://giscus.app/client.js https://giscus.app/api/discussions https://va.vercel-scripts.com/v1/speed-insights/script.debug.js analytics.umami.is;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://giscus.app/client.js https://giscus.app/api/discussions https://va.vercel-scripts.com/v1/speed-insights/script.debug.js;
   style-src 'self' 'unsafe-inline' https://giscus.app/default.css;
   img-src * blob: data:;
   media-src *.s3.amazonaws.com;
