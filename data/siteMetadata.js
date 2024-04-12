@@ -7,7 +7,7 @@ const siteMetadata = {
   description: '개발 활동을 하면서 느낀 점을 기록하는 곳입니다.',
   language: 'ko-KR',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://sh-devlog.vercel.app/',
+  siteUrl: 'https://sh-devlog.vercel.app',
   siteRepo: 'https://github.com/Banana-Master/blog',
   siteLogo: '/static/images/logo.png',
   socialBanner: '/static/images/social-banner.png',
