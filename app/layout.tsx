@@ -67,8 +67,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+      {/* 네이버 서치콘솔 등록 */}
+      <meta name="naver-site-verification" content="ee97453b1639269dc447831d3bfa3bc64e660bb9" />
       {/* 구글 서치콘솔 등록 */}
       <meta name="google-site-verification" content="bIDb7wkrEv2qHMvpXzr0ySb48Bem2srLquA-frIjooo" />
+
 
       <body className="bg-white text-black antialiased dark:bg-gray-800 dark:text-white">
         <ThemeProviders>
