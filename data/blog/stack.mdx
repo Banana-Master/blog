@@ -1,0 +1,93 @@
+---
+title: '[ 묘공단 ] Stack'
+date: '2024-04-27'
+lastmod: '2024-04-27'
+tags: ['#묘공단', '#자료구조']
+draft: false
+summary: '자료구조 Stack을 알아보고 Java에서 어떻게 사용하는지 알아보자'
+images: ['https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fcdb6699c-3ce4-4a16-96b1-929cdcb3d7ef%2F9b77f5ac-e71e-41f5-8285-ee0e5bdbe0f1%2FFrame_67.png&blockId=cfd8eda1-92a5-411e-9497-8d659f3d9c91']
+---
+
+이 글은 책 `코딩테스트 합격자 되기 - 자바편 (골든래빗 - 김희성저)`의 내용이 포함되어있습니다. 
+
+![그림](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fcdb6699c-3ce4-4a16-96b1-929cdcb3d7ef%2F9b77f5ac-e71e-41f5-8285-ee0e5bdbe0f1%2FFrame_67.png&blockId=cfd8eda1-92a5-411e-9497-8d659f3d9c91)
+
+**스택(Stack)** 의 어원은 `쌓는다`입니다. 어원에서 짐작할 수 있듯이 먼저 입력한 데이터를 제일 나중에 꺼내는 `후입선출(LIFO)`방식입니다.
+
+스택은 실생활에서도 쉽게 찾아볼 수 있는데 각티슈나, 빨래바구니 등을 예시로 볼 수 있습니다.
+
+```java:Stack메서드확인
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.Stack;
+
+public class Print {
+    public static void main(String[] args) {
+        Class c = Stack.class;
+        Method[] m = c.getDeclaredMethods();
+        Arrays.stream(m).forEach(System.out::println);
+    }
+}
+```
+
+```java:결과
+public boolean java.util.Stack.empty()
+public synchronized java.lang.Object java.util.Stack.peek()
+public synchronized int java.util.Stack.search(java.lang.Object)
+public java.lang.Object java.util.Stack.push(java.lang.Object)
+public synchronized java.lang.Object java.util.Stack.pop()
+```
+스택의 주요 동작은 다음과 같습니다:
+
+`empty` 스택이 비어 있는지 확인합니다.
+
+`peek` 스택의 맨 위에 있는 요소를 반환하되, 제거하지 않습니다.
+
+`search` 특정 요소의 위치를 반환합니다.
+
+`push` 스택의 맨 위에 요소를 추가합니다.
+
+`pop` 스택의 맨 위에 있는 요소를 제거하고 반환합니다.
+
+```java:Stack예제
+import java.util.Stack;
+
+public class StackExample {
+    public static void main(String[] args) {
+        Stack<Integer> stack = new Stack<>();
+        
+        // 스택에 요소 추가
+        stack.push(10); // 스택에 10 추가
+        stack.push(20); // 스택에 20 추가
+        stack.push(30); // 스택에 30 추가
+        
+        System.out.println("스택 내용: " + stack); // [10, 20, 30]
+        
+        // 스택에서 요소 제거 및 반환
+        int topElement = stack.pop(); // 스택의 맨 위 요소 제거
+        System.out.println("팝: " + topElement); // 30
+        
+        // 스택의 맨 위 요소 확인
+        int peekElement = stack.peek(); // 스택의 맨 위 요소 확인
+        System.out.println("피크: " + peekElement); // 20
+        
+        // 스택이 비어 있는지 확인
+        boolean isEmpty = stack.empty(); // 스택이 비어 있는지 확인
+        System.out.println("스택이 비어 있는가? " + isEmpty); // false
+        
+        // 스택에서 특정 요소 검색
+        int position = stack.search(10); // 요소 10의 위치 찾기
+        System.out.println("요소 10의 위치: " + position); // 2 (1-based index)
+    }
+}
+
+```
+
+예제에서는 스택의 주요 메서드를 사용하여 스택에 요소를 추가하고, 제거하며, 스택의 맨 위 요소를 확인하는 방법을 보여줍니다. 
+
+스택은 후입선출 방식이므로, 먼저 들어간 요소는 나중에 나옵니다. 이를 이용하여 스택의 다양한 활용법을 이해할 수 있습니다.
+
+
+스택으로 함수 호출의 추적, 문자열 뒤집기, 괄호의 짝 맞추기, 그래프 탐색 등 다양한 알고리즘과 프로세스에서 활용할 수 있습니다. 
+
+이러한 특성을 이해하면, 스택을 효과적으로 활용하여 다양한 문제를 해결할 수 있습니다.
